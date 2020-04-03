@@ -14,16 +14,45 @@ import FiltersScreen from "./../screens/FiltersScreen";
 import MealsDetailsScreen from "./../screens/MealsDetailsScreen";
 import MealsScreen from "./../screens/MealsScreen";
 import TrendingScreen from "./../screens/TrendingScreen";
+import HomeScreen from './../screens/HomeScreen';
+import Colors from './../constants/Colors';
 
 const BottomTab = createBottomTabNavigator();
 const Tab = createMaterialTopTabNavigator();
 const Stack = createStackNavigator();
+
+const defaultStackNavOptions = {
+  headerStyle: {
+    backgroundColor: Platform.OS === 'android' ? Colors.primaryColor : ''
+  },
+  headerTitleStyle: {
+    fontFamily: 'open-sans-bold'
+  },
+  headerBackTitleStyle: {
+    fontFamily: 'open-sans'
+  },
+  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+ 
+};
+const mealsDetailsNavOptions={
+  headerStyle: {
+    backgroundColor: 'transparent',
+  },
+  headerTitleStyle: {
+    fontFamily: 'open-sans-bold'
+  },
+  headerBackTitleStyle: {
+    fontFamily: 'open-sans'
+  },
+  headerTintColor: Platform.OS === 'android' ? 'white' : Colors.primaryColor,
+}
 /**
  * CategoriesStack
  */
 function CategoriesStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    screenOptions={defaultStackNavOptions}>
       <Stack.Screen name="Categories" component={CategoriesScreen} />
       <Stack.Screen name="CategoryMeals" component={CategoryMealsScreen} />
       <Stack.Screen name="Meals" component={MealsScreen} />
@@ -56,7 +85,8 @@ function TopbarNavigator() {
  */
 function MealsStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+    screenOptions={defaultStackNavOptions}>
       <Stack.Screen name="Meals" component={MealsScreen} />
       <Stack.Screen name="MealDetails" component={MealsDetailsScreen} />
       <Stack.Screen name="Filters" component={FiltersScreen} />
@@ -66,11 +96,19 @@ function MealsStack() {
 
 function FilterStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={defaultStackNavOptions}>
       <Stack.Screen name="Filters" component={FiltersScreen} />
       <Stack.Screen name="MealDetails" component={MealsDetailsScreen} />
     </Stack.Navigator>
   );
+}
+function FavoritesStack(){
+  return(
+    <Stack.Navigator screenOptions={defaultStackNavOptions}>
+      <Stack.Screen name="Favorites" component={FavoritesScreen} />
+      <Stack.Screen name="MealDetails" component={MealsDetailsScreen} />
+    </Stack.Navigator>
+  )
 }
 
 function RootNavigator() {
@@ -86,16 +124,17 @@ function RootNavigator() {
       >
         <BottomTab.Screen
           name="Home"
-          component={TopbarNavigator}
+          component={CategoriesStack}
           options={{
             tabBarLabel: "Home",
             tabBarIcon: ({ color, size }) => (
               <FontAwesome name="home" color={color} size={size} />
-            )
+            ),
+            headerTitle:'Home'
           }}
         />
         <BottomTab.Screen
-          name="Meals"
+          name="Mealss"
           component={MealsStack}
           options={{
             tabBarLabel: "Meals",
@@ -106,7 +145,7 @@ function RootNavigator() {
         />
         <BottomTab.Screen
           name="Favorites"
-          component={FavoritesScreen}
+          component={FavoritesStack}
           options={{
             tabBarLabel: "Favorites",
             tabBarIcon: ({ color, size }) => (
