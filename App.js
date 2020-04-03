@@ -6,9 +6,11 @@ import { enableScreens } from 'react-native-screens';
 import { Provider } from 'react-redux';
 import {createStore , combineReducers} from 'redux';
 
-import MealsNavigator from './navigation/MealsNavigator';
+
 import mealsReducer from './store/meals.reducer';
 
+
+import RootNavigator from './src/navigation/RootNavigator';
 enableScreens();
 
 const rootReducer=combineReducers({
@@ -38,7 +40,7 @@ export default function App() {
 
   return( 
     <Provider store={store}>
-       <MealsNavigator />
+     <RootNavigator/>
     </Provider>
  );
 }

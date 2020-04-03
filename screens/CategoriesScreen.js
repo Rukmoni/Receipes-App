@@ -41,7 +41,7 @@ const CategoriesScreen = props => {
   );
 };
 
-CategoriesScreen.navigationOptions = navData => {
+/* CategoriesScreen.navigationOptions = navData => {
   return {
     headerTitle: 'Meal Categories',
     headerLeft: (
@@ -56,7 +56,7 @@ CategoriesScreen.navigationOptions = navData => {
       </HeaderButtons>
     )
   };
-};
+}; */
 
 const styles = StyleSheet.create({
   screen: {

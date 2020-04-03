@@ -27,8 +27,7 @@ const defaultStackNavOptions = {
     headerTitle: 'A Screen'
   };
   
-  const MealsNavigator = createStackNavigator(
-    {
+  const MealsNavigator = createStackNavigator(   {
       Categories: {
         screen: CategoriesScreen
       },
@@ -43,8 +42,7 @@ const defaultStackNavOptions = {
     }
   );
   
-  const FavNavigator = createStackNavigator(
-    {
+  const FavNavigator = createStackNavigator(    {
       Favorites: FavoritesScreen,
       MealDetail: MealDetailScreen
     },

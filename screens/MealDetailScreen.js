@@ -17,8 +17,11 @@ const ListItem = props => {
 };
 
 const MealDetailScreen = props => {
+  const {route}=props;
+  const mealTitle = route.params?.mealTitle ?? 'defaultValue';
+  const mealId = route.params?.mealId ?? 'defaultValue';
   const availableMeals=useSelector(state=>state.meals.meals);
-  const mealId = props.navigation.getParam('mealId');
+ // const mealId = props.navigation.getParam('mealId');
   const currentMealIsFavorite = useSelector(state=>
     state.meals.favoriteMeals.some(meal=>meal.id === mealId)
     );
